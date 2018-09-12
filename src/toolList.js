@@ -13,7 +13,6 @@ export default class ToolList extends Component {
     }
   }
   changeHander(e) {
-    console.log(e.target.value)
     this.setState({
       inputValue: e.target.value
     })
@@ -29,9 +28,20 @@ export default class ToolList extends Component {
     })
   }
   enterHander(e) {
-    if(e.keyCode==13){
+    if (e.keyCode == 13) {
       this.addHander();
     }
+  }
+  deleteItem(itemId) {
+    console.log('list', itemId)
+    let list = [...this.state.list];
+    let curIndex = list.findIndex(item => {
+      return item.id == itemId;
+    });
+    list.splice(curIndex, 1);
+    this.setState({
+      list: list
+    })
   }
   render() {
     return (
@@ -48,7 +58,7 @@ export default class ToolList extends Component {
             //父组件通过属性的形式向子组件传递参数
             // 子组件 通过props的形式接受父组件的参数
             this.state.list.map((item, index) => {
-              return <TodoItem key={item.id} {...item} num={index + 1} />
+              return <TodoItem delItem={this.deleteItem.bind(this)} key={item.id} {...item} num={index + 1} />
             })
           }
         </div>
