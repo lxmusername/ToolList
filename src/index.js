@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // 组件 导入
-import ToolList from './toolList.js';
+import ToolList from './components/toolList.js';
 //组件暂时无用
 // import registerServiceWorker from './registerServiceWorker';
 

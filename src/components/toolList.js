@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './toolList.css';
-import TodoItem from './components/todoItem.js'
+import TodoItem from './todoItem'
 
 export default class ToolList extends Component {
   constructor(props) {
