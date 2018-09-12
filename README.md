@@ -4,13 +4,14 @@ Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Table of Contents
-- react组建的创建方式 使用es6 class的形式
-- 父组件向子组件传值 通过属性的形式
-- 父组件向子组件传递方法 也是通过属性的形式
-- 子组件使用父组件的 属性 通过props的形式
-
-- 子组件向父组件传值 通过调用父组件的方法的形式
-- this.props.ParentFunction(args)的形式
+- 1.
+  - react组建的创建方式 使用es6 class的形式
+  - 父组件向子组件传值 通过属性的形式
+  - 父组件向子组件传递方法 也是通过属性的形式
+- 2.
+  - 子组件使用父组件的 属性 通过props的形式
+  - 子组件向父组件传值 通过调用父组件的方法的形式
+  - this.props.ParentFunction(args)的形式
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)
