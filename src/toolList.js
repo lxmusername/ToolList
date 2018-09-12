@@ -11,6 +11,12 @@ export default class ToolList extends Component {
       ],
       inputValue: ''
     }
+    // 重新指向this (比直接在dom使用的时候绑定this 代码性能更好)
+    this.changeHander = this.changeHander.bind(this);
+    this.enterHander = this.enterHander.bind(this);
+    this.addHander = this.addHander.bind(this);
+    this.deleteItem = this.deleteItem.bind(this)
+
   }
   changeHander(e) {
     this.setState({
@@ -43,23 +49,34 @@ export default class ToolList extends Component {
       list: list
     })
   }
+  getTodoItem() {
+    return (
+      //父组件通过属性的形式向子组件传递参数
+      // 子组件 通过props的形式接受父组件的参数
+      this.state.list.map((item, index) => {
+        return (
+          <TodoItem
+            delItem={this.deleteItem}
+            key={item.id}
+            {...item}
+            num={index + 1} />
+        );
+      })
+    )
+  }
   render() {
     return (
       <div className="ToolList">
         <header className='tool-head'>
           <input type='text' ref='jobVal'
             value={this.state.inputValue}
-            onChange={this.changeHander.bind(this)}
-            onKeyUp={this.enterHander.bind(this)} />
-          <button onClick={this.addHander.bind(this)}>添加任务</button>
+            onChange={this.changeHander}
+            onKeyUp={this.enterHander} />
+          <button onClick={this.addHander}>添加任务</button>
         </header>
         <div className='tool-content'>
-          {
-            //父组件通过属性的形式向子组件传递参数
-            // 子组件 通过props的形式接受父组件的参数
-            this.state.list.map((item, index) => {
-              return <TodoItem delItem={this.deleteItem.bind(this)} key={item.id} {...item} num={index + 1} />
-            })
+          <h3>Task list</h3>
+          {this.getTodoItem() //使用函数精简代码
           }
         </div>
       </div>
