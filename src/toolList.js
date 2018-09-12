@@ -1,24 +1,6 @@
 import React, { Component } from 'react';
 import './toolList.css';
-
-
-
-class List extends Component {
-
-  delItemHander() {
-    console.log(this.props)
-  }
-  render() {
-    return (
-      <p>
-        <span>{this.props.num} </span>
-        <span>{this.props.name} </span>
-        <span className='item-del' onClick={this.delItemHander.bind(this)}>del</span>
-      </p>
-    )
-  }
-}
-
+import TodoItem from './components/todoItem.js'
 
 export default class ToolList extends Component {
   constructor(props) {
@@ -47,7 +29,6 @@ export default class ToolList extends Component {
     })
   }
   enterHander(e) {
-    console.log(e.keyCode)
     if(e.keyCode==13){
       this.addHander();
     }
@@ -67,7 +48,7 @@ export default class ToolList extends Component {
             //父组件通过属性的形式向子组件传递参数
             // 子组件 通过props的形式接受父组件的参数
             this.state.list.map((item, index) => {
-              return <List key={item.id} {...item} num={index + 1} />
+              return <TodoItem key={item.id} {...item} num={index + 1} />
             })
           }
         </div>
